@@ -58,6 +58,8 @@ extension WeatherViewController: UITextFieldDelegate{
     }
 }
 
+//MARK: - WeatherManagerDelegate
+
 extension WeatherViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel){
         DispatchQueue.main.async {
