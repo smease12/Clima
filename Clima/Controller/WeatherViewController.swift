@@ -31,11 +31,7 @@ class WeatherViewController: UIViewController{
     }
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
-        if let location = locationManager.location{
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            weatherManager.fetchWeather(latitude: lat, longitude: lon)
-        }
+        locationManager.requestLocation()
     }
     
 }
@@ -44,6 +40,7 @@ class WeatherViewController: UIViewController{
 extension WeatherViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
+            locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
             weatherManager.fetchWeather(latitude: lat, longitude: lon)
