@@ -34,7 +34,12 @@ class WeatherViewController: UIViewController{
 //MARK: - CLLocationManagerDelegate
 extension WeatherViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Got location data")
+        if let location = locations.last{
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            print(lat)
+            print(lon)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
