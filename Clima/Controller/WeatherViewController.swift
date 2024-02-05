@@ -37,8 +37,7 @@ extension WeatherViewController: CLLocationManagerDelegate{
         if let location = locations.last{
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            print(lat)
-            print(lon)
+            weatherManager.fetchWeather(latitude: lat, longitude: lon)
         }
     }
     
@@ -74,7 +73,7 @@ extension WeatherViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let city = searchTextField.text{
-            weatherManager.fetchWeater(cityName: city)
+            weatherManager.fetchWeather(cityName: city)
         }
         searchTextField.text = ""
     }
